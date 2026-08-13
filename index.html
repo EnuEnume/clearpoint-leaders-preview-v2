@@ -127,8 +127,8 @@ window.__cpLoadPixel = function(){
 
   /* ── HERO ── */
   .hero{position:relative;min-height:100svh;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:40px;padding-top:150px;padding-bottom:90px}
-  .hero-copy{max-width:600px}
-  .hero h1{font-size:clamp(44px,6.6vw,86px);margin:26px 0 24px}
+  .hero-copy{max-width:640px}
+  .hero h1{font-size:clamp(36px,4.6vw,62px);margin:22px 0 22px}
   .hero h1 em{font-style:italic;color:var(--gold)}
   .hero .lede{max-width:490px;font-size:20px}
   .hero-actions{display:flex;align-items:center;gap:22px;margin-top:40px;flex-wrap:wrap}
@@ -153,8 +153,11 @@ window.__cpLoadPixel = function(){
   .portrait-tag{position:absolute;left:22px;bottom:20px;z-index:3;font-family:"Cormorant Garamond",serif;font-size:19px;color:var(--cream)}
   .portrait-tag small{display:block;font-family:"Manrope";font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-top:3px;font-weight:500}
   @media(max-width:900px){
-    .hero{grid-template-columns:1fr;padding-top:130px;padding-bottom:70px;gap:48px}
-    .hero-portrait{justify-self:start;max-width:360px;order:-1}
+    .hero{grid-template-columns:1fr;padding-top:130px;padding-bottom:70px;gap:36px}
+    .hero-portrait{justify-self:start;max-width:280px}
+  }
+  @media(max-width:520px){
+    .hero-portrait{max-width:220px}
   }
 
   /* ── SECTIONS ── */
@@ -227,6 +230,26 @@ window.__cpLoadPixel = function(){
   .bounds-block{margin-top:34px;padding-top:26px;border-top:1px solid var(--line);max-width:640px}
   .bounds-block h4{font-family:"Manrope";font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;font-weight:600}
   .bounds-block p{color:var(--cream-dim);font-size:15px;line-height:1.65}
+
+  /* offer summary — restrained spec sheet, not a pricing card */
+  .offer{border-top:1px solid var(--line)}
+  .offer-grid{display:flex;flex-direction:column;margin-top:12px;border-top:1px solid var(--line);max-width:720px}
+  .offer-row{display:grid;grid-template-columns:220px 1fr;gap:24px;padding:20px 0;border-bottom:1px solid var(--line)}
+  .offer-label{font-family:"Manrope";font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--cream-mute);padding-top:2px}
+  .offer-val{font-size:17px;color:var(--cream);line-height:1.5}
+  .offer-note{margin-top:26px;color:var(--cream-dim);font-size:15px;line-height:1.7;max-width:640px}
+  @media(max-width:640px){.offer-row{grid-template-columns:1fr;gap:6px;padding:16px 0}}
+
+  /* compact early trust intro */
+  .introperson{border-top:1px solid var(--line)}
+  .introperson-grid{display:grid;grid-template-columns:.55fr 1fr;gap:50px;align-items:center}
+  .introperson-photo{position:relative;border-radius:6px;overflow:hidden;aspect-ratio:4/5;max-width:260px}
+  .introperson-photo img{width:100%;height:100%;object-fit:cover}
+  .introperson-copy h2{margin:6px 0 16px}
+  .introperson-copy p{color:var(--cream-dim);font-size:17px;line-height:1.6;max-width:520px}
+  .introperson-badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+  .introperson-link{margin-top:22px}
+  @media(max-width:860px){.introperson-grid{grid-template-columns:1fr;gap:28px}.introperson-photo{max-width:200px}}
   @media(max-width:860px){.about-grid{grid-template-columns:1fr;gap:40px}.about-photo{max-width:340px}}
 
   /* path */
@@ -435,6 +458,25 @@ window.__cpLoadPixel = function(){
     </div>
   </section>
 
+  <!-- COMPACT TRUST INTRO -->
+  <section class="introperson container">
+    <div class="introperson-grid">
+      <div class="introperson-photo reveal">
+        <img src="assets/lena-about.jpg?v=orig" alt="Lena Lutkova" />
+      </div>
+      <div class="introperson-copy reveal d1">
+        <div class="section-tag"><span class="line"></span><span class="eyebrow" data-i18n="ip.tag">Who you'll work with</span></div>
+        <h2>Lena <em style="font-style:italic;color:var(--gold)">Lutkova</em></h2>
+        <p data-i18n="ip.p">I work with executives and founders navigating professional crisis and complex decisions — individually, one relationship at a time. My approach is grounded in transactional analysis and built from direct client work, not a generic framework.</p>
+        <div class="introperson-badges">
+          <span class="cred" data-i18n="ip.badge1">Candidate-CTA, UATA</span>
+          <span class="cred" data-i18n="ip.badge2">Working with clients since 2021</span>
+        </div>
+        <a href="#about" class="btn-ghost introperson-link" data-i18n="ip.link">About &amp; qualifications ↓</a>
+      </div>
+    </div>
+  </section>
+
   <!-- WHAT IT IS -->
   <section class="whatis container">
     <div class="section-tag reveal"><span class="line"></span><span class="eyebrow" data-i18n="what.tag">What this is</span></div>
@@ -552,27 +594,59 @@ window.__cpLoadPixel = function(){
     </div>
   </section>
 
+  <!-- OFFER SUMMARY -->
+  <section class="offer container" id="offer">
+    <div class="section-tag reveal"><span class="line"></span><span class="eyebrow" data-i18n="offer.tag">The engagement</span></div>
+    <h2 class="reveal" data-i18n="offer.h2">What's included.</h2>
+    <div class="offer-grid reveal d1">
+      <div class="offer-row">
+        <div class="offer-label" data-i18n="offer.l1">Duration</div>
+        <div class="offer-val" data-i18n="offer.v1">Three months</div>
+      </div>
+      <div class="offer-row">
+        <div class="offer-label" data-i18n="offer.l2">Meetings</div>
+        <div class="offer-val" data-i18n="offer.v2">24 individual 60-minute meetings — 8 a month</div>
+      </div>
+      <div class="offer-row">
+        <div class="offer-label" data-i18n="offer.l3">Between meetings</div>
+        <div class="offer-val" data-i18n="offer.v3">Messaging as needed, within agreed boundaries</div>
+      </div>
+      <div class="offer-row">
+        <div class="offer-label" data-i18n="offer.l4">Price</div>
+        <div class="offer-val" data-i18n="offer.v4">£4,800 total · £1,600 a month</div>
+      </div>
+      <div class="offer-row">
+        <div class="offer-label" data-i18n="offer.l5">Before starting</div>
+        <div class="offer-val" data-i18n="offer.v5">Free introductory meeting, 1–2 hours</div>
+      </div>
+    </div>
+    <p class="offer-note reveal d2" data-i18n="offer.rhythm">The twice-weekly rhythm is intentional: it creates continuity during periods when decisions, roles and working relationships may be changing quickly, while leaving enough time between meetings to observe what is happening in practice.</p>
+  </section>
+
   <!-- ABOUT -->
-  <section class="about container">
+  <section class="about container" id="about">
     <div class="about-grid">
       <div class="about-photo reveal">
         <img src="assets/lena-about.jpg?v=orig" alt="Lena Lutkova" />
         <div class="frame"></div>
       </div>
       <div>
-        <div class="section-tag reveal"><span class="line"></span><span class="eyebrow" data-i18n="ab.tag">The person you'll work with</span></div>
+        <div class="section-tag reveal"><span class="line"></span><span class="eyebrow" data-i18n="ab.tag">About &amp; qualifications</span></div>
         <h2 class="reveal">Lena <em>Lutkova</em></h2>
         <p class="reveal d1" data-i18n="ab.p1">I work with executives and founders navigating professional crisis and complex decisions. I've worked individually with clients since 2021, alongside ongoing professional training in transactional analysis.</p>
         <div class="creds-block reveal d2">
           <div class="creds-group">
-            <div class="creds-label" data-i18n="ab.eduLabel">Education</div>
-            <div class="creds-line" data-i18n="ab.edu1">BSc, Information Security Systems — Kharkiv National University of Internal Affairs, 2012–2016</div>
+            <div class="creds-label" data-i18n="ab.taLabel">Current professional development</div>
+            <div class="creds-line" data-i18n="ab.ta1">TA 101 / TA 202 — Transactional Analysis, 2021–2024</div>
+            <div class="creds-line" data-i18n="ab.ta2">Candidate-CTA (candidate for certification), UATA — since August 2026</div>
+          </div>
+          <div class="creds-group">
+            <div class="creds-label" data-i18n="ab.maLabel">Current academic study</div>
             <div class="creds-line" data-i18n="ab.edu2">MA, Clinical &amp; Rehabilitation Psychology — Bohdan Khmelnytsky National University of Cherkasy. Admitted; programme commencing September 2026.</div>
           </div>
           <div class="creds-group">
-            <div class="creds-label" data-i18n="ab.taLabel">Transactional analysis</div>
-            <div class="creds-line" data-i18n="ab.ta1">TA 101 / TA 202 — Transactional Analysis, 2021–2024</div>
-            <div class="creds-line" data-i18n="ab.ta2">Candidate-CTA (candidate for certification), UATA — since August 2026</div>
+            <div class="creds-label" data-i18n="ab.eduLabel">Previous education</div>
+            <div class="creds-line" data-i18n="ab.edu1">BSc, Information Security Systems — Kharkiv National University of Internal Affairs, 2012–2016</div>
           </div>
           <div class="creds-group">
             <div class="creds-label" data-i18n="ab.memLabel">Professional memberships</div>
